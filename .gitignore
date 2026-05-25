@@ -1,2 +1,9 @@
 .env
 .venv
+
+
+*.csv
+
+
+series_ids.md
+__pycache__
