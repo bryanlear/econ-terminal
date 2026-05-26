@@ -29,6 +29,7 @@ def fetch_group(client: FREDClient, group: list[dict], label: str):
         return None
 
     combined = pd.concat(frames, axis=1, join="outer", sort=False).sort_index()
+    combined = combined.dropna(how="all")  #remove NaN rows
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_path = OUTPUT_DIR / f"{label}.csv"
@@ -38,7 +39,7 @@ def fetch_group(client: FREDClient, group: list[dict], label: str):
 #report
     empty_cols = [col for col in combined.columns if combined[col].isna().all()]
     if empty_cols:
-        print(f"  WARNING — all-NaN columns ({len(empty_cols)}): {', '.join(empty_cols)}")
+        print(f"  !!!! — all-NaN columns ({len(empty_cols)}): {', '.join(empty_cols)}")
         print(f"  Series returned no numeric data from FRED. Check IDs in catalog.py")
 
     if failed:
@@ -48,11 +49,13 @@ def fetch_group(client: FREDClient, group: list[dict], label: str):
 
 def main():
     client = FREDClient()
-    QUARTERLY = [s for s in SERIES if s["frequency"] == "q"]
-    fetch_group(client, DAILY,     "daily")
-    fetch_group(client, WEEKLY,    "weekly")
-    fetch_group(client, MONTHLY,   "monthly")
-    fetch_group(client, QUARTERLY, "quarterly")
+    QUARTERLY   = [s for s in SERIES if s["frequency"] == "q"]
+    SEMIANNUAL  = [s for s in SERIES if s["frequency"] == "sa"]
+    fetch_group(client, DAILY,      "daily")
+    fetch_group(client, WEEKLY,     "weekly")
+    fetch_group(client, MONTHLY,    "monthly")
+    fetch_group(client, QUARTERLY,  "quarterly")
+    fetch_group(client, SEMIANNUAL, "semiannual")
     print("\nAll saved to data/processed/")
 
 if __name__ == "__main__":

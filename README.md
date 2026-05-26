@@ -1,2 +1,3 @@
-# Macroeconomic Data Dashboard - Bloomberg-like Terminal Style
+## Macroeconomic Data Dashboard
 
+![](src/plots/test_v1.png)

@@ -6,7 +6,7 @@ SERIES: list[dict] = [
 
     # Auto loan rates
     {"id": "TERMCBAUTO48NS",        "name": "Consumer Auto Loan Rate 48-Month",              "frequency": "m", "category": "Interest Rates"},
-    {"id": "RIFLPBCIANM72NM",       "name": "Consumer Auto Loan Rate 72-Month",              "frequency": "m", "category": "Interest Rates"},
+    {"id": "RIFLPBCIANM72NM",       "name": "Consumer Auto Loan Rate 72-Month",              "frequency": "sa", "category": "Interest Rates"},
 
     # Corporate bond yields
     {"id": "DAAA",                  "name": "Moody's Aaa Corporate Bond Yield",              "frequency": "d", "category": "Interest Rates"},
