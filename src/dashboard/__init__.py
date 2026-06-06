@@ -1,3 +1,1 @@
-from .app import EconTerminal
-
-__all__ = ["EconTerminal"]
+__all__: list[str] = []

@@ -1,3 +1,6 @@
 ## Macroeconomic Data Dashboard
 
-![](src/plots/test_v1.png)
+| Dashboard | Chart View |
+|:---------:|:------:|
+| ![dashboard](src/plots/dashboard_v2.png) | ![charts](src/plots/charts_v2.png) |
+
